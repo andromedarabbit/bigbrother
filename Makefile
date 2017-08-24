@@ -11,7 +11,7 @@ build:
 test: build
 	$(GO) test -coverprofile=coverage.txt -covermode=atomic
 
-image: clean
+image:
 	glide install
 	$(GODOCKER) build -a -installsuffix cgo -o bin/$(BIN) .
 	docker build -t $(IMAGE):$(TAG) .
