@@ -1,5 +1,5 @@
-GO=CGO_ENABLED=0 go
-GODOCKER=CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go
+GO=CGO_ENABLED=1 go
+GODOCKER=CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go
 TAG=latest
 BIN=bigbrother
 IMAGE=dailyhotel/$(BIN)
@@ -9,7 +9,7 @@ build:
 	$(GO) build -a -installsuffix cgo -o bin/$(BIN) .
 
 test: build
-	$(GO) test -coverprofile=coverage.txt -covermode=atomic
+	$(GO) test -race -coverprofile=coverage.txt -covermode=atomic
 
 image:
 	glide install
