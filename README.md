@@ -8,6 +8,25 @@
 
 Do you want to know how frequently your ELBs change their own IP addresses? **bigbrother** will help you to find out it!
 
+## IAM permissions
+
+``` json
+{
+ "Version": "2012-10-17",
+ "Statement": [
+   {
+     "Effect": "Allow",
+     "Action": [
+       "elasticloadbalancing:DescribeLoadBalancers"
+     ],
+     "Resource": [
+       "*"
+     ]
+   }
+ ]
+}
+```
+
 ## How to configure
 
 The following environment variables can be configured:
