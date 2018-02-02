@@ -1,5 +1,5 @@
-GO=CGO_ENABLED=1 go
-GODOCKER=CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go
+GO=go
+GODOCKER=GOOS=linux GOARCH=amd64 go
 TAG=latest
 BIN=bigbrother
 IMAGE=dailyhotel/$(BIN)
