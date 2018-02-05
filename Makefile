@@ -2,7 +2,7 @@ GO=go
 GODOCKER=GOOS=linux GOARCH=amd64 go
 TAG=latest
 BIN=bigbrother
-IMAGE=dailyhotel/$(BIN)
+IMAGE=andromedarabbit/$(BIN)
 
 build:
 	glide install
