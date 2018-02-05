@@ -1,8 +1,8 @@
-[![codecov](https://codecov.io/gh/DailyHotel/bigbrother/branch/master/graph/badge.svg)](https://codecov.io/gh/DailyHotel/bigbrother)
-[![Build Status](https://travis-ci.org/DailyHotel/bigbrother.svg?branch=master)](https://travis-ci.org/DailyHotel/bigbrother)
-[![Docker Pulls](https://img.shields.io/docker/pulls/mashape/kong.svg)](https://hub.docker.com/r/dailyhotel/bigbrother/)
-[![](https://images.microbadger.com/badges/image/dailyhotel/bigbrother.svg)](https://microbadger.com/images/dailyhotel/bigbrother "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/dailyhotel/bigbrother.svg)](https://microbadger.com/images/dailyhotel/bigbrother "Get your own version badge on microbadger.com")
+[![codecov](https://codecov.io/gh/andromedarabbit/bigbrother/branch/master/graph/badge.svg)](https://codecov.io/gh/andromedarabbit/bigbrother)
+[![Build Status](https://travis-ci.org/andromedarabbit/bigbrother.svg?branch=master)](https://travis-ci.org/andromedarabbit/bigbrother)
+[![Docker Pulls](https://img.shields.io/andromedarabbit/pulls/mashape/kong.svg)](https://hub.docker.com/r/andromedarabbit/bigbrother/)
+[![](https://images.microbadger.com/badges/image/andromedarabbit/bigbrother.svg)](https://microbadger.com/images/andromedarabbit/bigbrother "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/andromedarabbit/bigbrother.svg)](https://microbadger.com/images/andromedarabbit/bigbrother "Get your own version badge on microbadger.com")
 
 # bigbrother
 
@@ -42,7 +42,7 @@ The following environment variables can be configured:
 ## How to run on Docker
 
 ``` bash
-docker run dailyhotel/bigbrother -e AWS_REGION=ap-northeast-1 -e AWS_ACCESS_KEY_ID=MY_KEY -e AWS_SECRET_ACCESS_KEY=MY_SECRET -e SLACK_TOKEN=MY_TOKEN -e SLACK_CHANNEL=ops -e LOGGING_LEVEL=INFO
+docker run andromedarabbit/bigbrother -e AWS_REGION=ap-northeast-1 -e AWS_ACCESS_KEY_ID=MY_KEY -e AWS_SECRET_ACCESS_KEY=MY_SECRET -e SLACK_TOKEN=MY_TOKEN -e SLACK_CHANNEL=ops -e LOGGING_LEVEL=INFO
 ```
 
 ## How to run on Kubernetes
@@ -63,7 +63,7 @@ spec:
     spec:
       containers:
       - name: bigbrother
-        image: dailyhotel/bigbrother:latest
+        image: andromedarabbit/bigbrother:latest
         env:
         - name: SLACK_TOKEN
           value: "MY_TOKEN"
