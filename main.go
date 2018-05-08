@@ -96,7 +96,7 @@ func main() {
 
 			elbName := *desc.LoadBalancerName
 			dnsName := *desc.DNSName
-			addresses, err := net.LookupHost(dnsName)
+			addresses, err := net.LookupHost("all." + dnsName)
 			if err != nil {
 				glog.Warningf("DNS resolution failed against ELB %s's address `%s`", elbName, dnsName)
 				continue
