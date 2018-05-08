@@ -1,5 +1,5 @@
 GO=go
-GODOCKER=GOOS=linux GOARCH=amd64 go
+GODOCKER=CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go
 TAG=latest
 BIN=bigbrother
 IMAGE=andromedarabbit/$(BIN)
