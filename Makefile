@@ -1,5 +1,5 @@
 GO=go
-GODOCKER=GOOS=linux GOARCH=amd64 go
+GODOCKER=CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go
 TAG=latest
 BIN=bigbrother
 IMAGE=andromedarabbit/$(BIN)
@@ -13,7 +13,7 @@ test: build
 
 image:
 	glide install
-	$(GODOCKER) build -a -installsuffix cgo -o bin/$(BIN) .
+	$(GODOCKER) build -a -o bin/$(BIN) .
 	docker build -t $(IMAGE):$(TAG) .
 
 deploy: image
