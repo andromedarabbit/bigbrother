@@ -1,4 +1,4 @@
-FROM alpine
+FROM debian:jessie-slim
 
 RUN apk add --update ca-certificates && \
     rm -rf /var/cache/apk/* /tmp/*
