@@ -1,4 +1,4 @@
-FROM debian:jessie-slim
+FROM alpine
 
 RUN apk add --update ca-certificates && \
     rm -rf /var/cache/apk/* /tmp/*
@@ -6,7 +6,7 @@ RUN apk add --update ca-certificates && \
 RUN mkdir -p /opt/app
 WORKDIR /opt/app
 
-COPY bin/bigbrother ./
+COPY bigbrother ./
 
 ENV LOGGING_LEVEL WARNING
 
