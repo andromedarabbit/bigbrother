@@ -1,30 +1,38 @@
-GO=go
-GODOCKER=CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go
-TAG=latest
-BIN=bigbrother
-IMAGE=andromedarabbit/$(BIN)
+NAME			:= bigbrother
 
-build:
-	glide install
-	$(GO) build -a -installsuffix cgo -o bin/$(BIN) .
+BIN			:= $(NAME)
 
+SHELL := /bin/bash
+
+
+# go source files, ignore vendor directory
+SRC = $(shell find . -type f -name '*.go' -not -path "./vendor/*")
+
+.PHONY: all
+all: test
+
+.PHONY: build
+build: fmt
+	@go build -o bin/$(BIN) .
+
+.PHONY: test
 test: build
-	$(GO) test -race -coverprofile=coverage.txt -covermode=atomic
+	@go test .
 
-image:
-	glide install
-	$(GODOCKER) build -a -o bin/$(BIN) .
-	docker build -t $(IMAGE):$(TAG) .
+.PHONY: fmt
+fmt:
+	@ if ! which goimports > /dev/null; then \
+		go get -u -v golang.org/x/tools/cmd/goimports; \
+	fi
 
-deploy: image
-	docker push $(IMAGE):$(TAG)
+	go mod tidy
+	goimports -l -w $(SRC)
+	gofmt -l -w -s $(SRC)
 
-.PHONY: clean
+.PHONY: run
+run: build
+	bin/$(BIN)
 
-clean:
-	rm -rf bin/
-	rm -f coverage.txt
-
-cleanall: clean
-	rm -rf vendor/
-
+.PHONY: snapshot
+snapshot:
+	goreleaser --snapshot --rm-dist
