@@ -6,7 +6,7 @@ RUN apk add --update ca-certificates && \
 RUN mkdir -p /opt/app
 WORKDIR /opt/app
 
-COPY bin/bigbrother ./
+COPY bigbrother ./
 
 ENV LOGGING_LEVEL WARNING
 
